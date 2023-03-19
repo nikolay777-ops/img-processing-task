@@ -1,6 +1,6 @@
 #include "utils.hpp"
 
-std::vector<int> Binarization::ComputeHistogram(const std::vector<std::vector<float>>& image)
+std::vector<int> Binarization::ComputeHistogram(const std::vector<std::vector<uchar>>& image)
 {
     std::vector<int> histogram(256, 0);
 
@@ -44,7 +44,7 @@ float Binarization::ComputeMeanIntensity(const std::vector<int>& histogram)
     return sum / count;
 }
 
-float Binarization::ComputeOtsuThreshold(const std::vector<std::vector<float>>& image)
+float Binarization::ComputeOtsuThreshold(const std::vector<std::vector<uchar>>& image)
 {
     std::vector<int> histogram = Binarization::ComputeHistogram(image);
     std::vector<int> cumulativeSum = Binarization::ComputeCumulativeSum(histogram);
@@ -75,7 +75,7 @@ float Binarization::ComputeOtsuThreshold(const std::vector<std::vector<float>>& 
     return threshold;
 }
 
-void Binarization::BinaryThreshold(const std::vector<std::vector<float>>& inputImage, std::vector<std::vector<int>>& outputImage, float threshold)
+void Binarization::BinaryThreshold(const std::vector<std::vector<uchar>>& inputImage, std::vector<std::vector<uchar>>& outputImage, float threshold)
 {
     for (int i = 0; i < inputImage.size(); i++)
     {
@@ -86,7 +86,7 @@ void Binarization::BinaryThreshold(const std::vector<std::vector<float>>& inputI
     }
 }
 
-void Binarization::OtsuThreshold(const std::vector<std::vector<float>>& inputImage, std::vector<std::vector<int>>& outputImage)
+void Binarization::OtsuThreshold(const std::vector<std::vector<uchar>>& inputImage, std::vector<std::vector<uchar>>& outputImage)
 {
     Binarization bin;
 
@@ -103,7 +103,7 @@ bool Borders::CheckBoundary(int x, int y, int rows, int cols)
 }
 
 // Функция для выполнения поиска в ширину (BFS)
-void Borders::BFS(int x, int y, int label, const std::vector<std::vector<int>>& binaryImg, std::vector<std::vector<int>>& labels) 
+void Borders::BFS(int x, int y, int label, const std::vector<std::vector<uchar>>& binaryImg, std::vector<std::vector<int>>& labels) 
 {
     int rows = binaryImg.size();
     int cols = binaryImg[0].size();
@@ -136,7 +136,7 @@ void Borders::BFS(int x, int y, int label, const std::vector<std::vector<int>>& 
 
 
 // Функция для выполнения связного компонентного анализа (CCA)
-void Borders::CCA(const std::vector<std::vector<int>>& binaryImg, std::vector<std::vector<int>>& labels) 
+void Borders::CCA(const std::vector<std::vector<uchar>>& binaryImg, std::vector<std::vector<int>>& labels) 
 {
     int rows = binaryImg.size();
     int cols = binaryImg[0].size();
