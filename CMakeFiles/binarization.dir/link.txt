@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbinarization.a CMakeFiles/binarization.dir/binarization.cpp.o
+/usr/bin/ranlib libbinarization.a

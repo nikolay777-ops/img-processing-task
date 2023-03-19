@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbinarize.a CMakeFiles/binarize.dir/filter.cpp.o
+/usr/bin/ranlib libbinarize.a

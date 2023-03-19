@@ -1,0 +1,2 @@
+/usr/bin/ar qc libborders.a CMakeFiles/borders.dir/filter.cpp.o
+/usr/bin/ranlib libborders.a
